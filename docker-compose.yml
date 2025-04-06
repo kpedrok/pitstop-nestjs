@@ -1,0 +1,12 @@
+
+services:
+  db:
+    image: postgres:16.8-alpine3.20
+    container_name: postgres_container_2
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: demo
+    ports:
+      - 5432:5432
