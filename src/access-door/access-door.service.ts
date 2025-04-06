@@ -7,13 +7,12 @@ import { ValidateAccessDto } from './dto/validate-access.dto';
 @Injectable()
 export class AccessDoorService {
   private readonly allowedName: string;
-  private readonly logger = new Logger(AccessDoorService.name); // Initialize logger
-
+  private readonly logger = new Logger(AccessDoorService.name);
   constructor(
     private readonly entryHistoryService: EntryHistoryService,
     private readonly accessCodeService: AccessCodeService,
   ) {
-    this.allowedName = process.env.ALLOWED_NAME || 'Joe'; // Configurable allowed name
+    this.allowedName = process.env.ALLOWED_NAME || 'Joe';
   }
 
   async validateAccess(validateAccessDto: ValidateAccessDto): Promise<void> {
