@@ -22,7 +22,12 @@ import { EntryHistoryModule } from './entry-history/entry-history.module';
         database: configService.get('DB_NAME'),
         port: +configService.get('DB_PORT'),
         entities: [join(process.cwd(), 'dist/**/*.entity.js')],
-        synchronize: true,
+        synchronize: true, // remove for production and implement migrations
+        logging: true, // remove for prod
+        extra: {
+          max: 10, // Maximum number of connections in the pool
+          idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+        },
       }),
     }),
     EntryHistoryModule,
